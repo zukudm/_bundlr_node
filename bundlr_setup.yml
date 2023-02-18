@@ -10,8 +10,8 @@
       - name: Check if Docker and Docker Compose are installed
         include_tasks: "playbooks/check_docker.yml"
 
-      # - name: Remove containers and all not used container stuff
-      #   include_tasks: "playbooks/clean.yml"
+      - name: Remove containers and all not used container stuff
+        include_tasks: "playbooks/clean.yml"
       
 
 
