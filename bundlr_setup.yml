@@ -28,7 +28,7 @@
       - name: Write env list to env file for docker-compose 
         lineinfile:
           create: yes
-          path: "{{ env_file }}"
+          path: "{{ git_dst }}{{ env_file }}"
           line: "{{ env_vars | join('\n') }}"   
 
       # - name: Create and start services
