@@ -37,8 +37,9 @@
       
   
       - name: Start project
-        community.general.shell: docker-compose up -d
-        chdir: "{{ git_dst }}"
+        community.general.shell:
+          cmd: docker-compose up -d
+          chdir: "{{ git_dst }}"
         register: docker_output
 
       - debug:
