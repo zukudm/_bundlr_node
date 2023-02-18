@@ -31,6 +31,12 @@
           path: "{{ git_dst }}{{ env_file }}"
           line: "{{ env_vars | join('\n') }}"   
 
+      - name: Run arweave container and generate wallet
+        include_tasks: "arweave/arweave.yml"
+      
+
+
+
       # - name: Create and start services
       #   community.docker.docker_compose:
       #     project_src: "{{ git_dst }}"
