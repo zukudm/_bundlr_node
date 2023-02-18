@@ -32,12 +32,10 @@
 
       - name: Run arweave container and generate wallet
         include_tasks: "arweave/arweave.yml"
-      
-
-      
+            
   
       - name: Start project
-        community.general.shell:
+        shell: 
           cmd: docker-compose up -d
           chdir: "{{ git_dst }}"
         register: docker_output
