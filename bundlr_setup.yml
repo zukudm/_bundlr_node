@@ -34,14 +34,26 @@
         include_tasks: "arweave/arweave.yml"
       
 
+      
+  
+      - name: Start project
+        community.general.shell: docker-compose up -d
+        args:
+          chdir: "{{ git_dst }}"
+        register: docker_output
+
+      - debug:
+        var: docker_output.stdout_lines
 
 
-      - name: Create and start services
-        community.docker.docker_compose:
-          project_src: "{{ git_dst }}"
-          pull: true
-          detached: yes
-        register: output
+
+
+      # - name: Create and start services
+      #   community.docker.docker_compose:
+      #     project_src: "{{ git_dst }}"
+      #     pull: true
+      #     detached: yes
+      #   register: output
           
       
 
