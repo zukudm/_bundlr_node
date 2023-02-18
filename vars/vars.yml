@@ -1,0 +1,38 @@
+---
+host: localhost
+container_name: bundlr_node
+volume_name: bundlr_volume
+network_name: bundlr_net
+working_user: ansible
+dockerfile: Dockerfile
+
+git_url: https://github.com/Bundlr-Network/validator.git
+git_dst: "./bundlr/"
+
+env_file: ".env"
+env_vars: 
+    - "VALIDATOR_KEY:=./wallet.json"
+    - "GW_WALLET=./wallet.json" 
+    - "PORT=2109"
+    - "BUNDLER_URL=https://node1.bundlr.network"
+    - "GW_ARWEAVE=https://arweave.testnet1.bundlr.network"
+    - "GW_CONTRACT=RkinCLBlY4L5GZFv8gCFcrygTyd5Xm91CzKlR6qxhKA"
+
+
+
+cpus: 1
+cpu_shares: 1024
+memory: 6144m
+memory_reservation: 4098m
+
+
+
+
+
+
+
+
+
+
+
+

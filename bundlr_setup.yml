@@ -1,0 +1,41 @@
+- name: Install 
+  vars_files: 
+    - vars/vars.yml
+  hosts: "{{ host }}"
+  gather_facts: yes
+  become: yes    
+  
+  tasks:
+
+      - name: Check if Docker and Docker Compose are installed
+        include_tasks: "playbooks/check_docker.yml"
+
+      - name: Remove containers and all not used container stuff
+        include_tasks: "playbooks/clean.yml"
+      
+
+
+      - name: Create a docker network
+        docker_network:
+          name: "{{ network_name }}"
+
+      - name: Git checkout
+        ansible.builtin.git:
+          repo: '{{ git_url }}'
+          dest: "{{ git_dst }}"
+          force: true
+
+      - name: Write env list to env file for docker-compose 
+        lineinfile:
+          path: "{{ env_file }}"
+          line: "{{ env_vars | join('\n') }}"   
+
+      # - name: Create and start services
+      #   community.docker.docker_compose:
+      #     project_src: "{{ git_dst }}"
+      #     pull: true
+      #   register: output
+          
+      
+
+     
