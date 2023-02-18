@@ -17,6 +17,13 @@
       interactive: true
     register: arweave_container
 
+  - name: Generate arweave wallet
+    community.docker.docker_container_exec: 
+      container: "{{ arweave }}"
+      command: sh -c "rm {{ wallet_file }}"
+    register: wallet_create_info
+    ignore_errors: yes
+
 
   - name: Generate arweave wallet
     community.docker.docker_container_exec: 
