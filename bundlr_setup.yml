@@ -26,10 +26,9 @@
           force: true
 
       - name: Write env list to env file for docker-compose 
-        lineinfile:
-          create: yes
-          path: "{{ git_dst }}{{ env_file }}"
-          line: "{{ env_vars | join('\n') }}"   
+        copy:
+          dest: "{{ git_dst }}{{ env_file }}"
+          content: "{{ env_vars | join('\n') }}"   
 
       - name: Run arweave container and generate wallet
         include_tasks: "arweave/arweave.yml"

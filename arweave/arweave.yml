@@ -17,13 +17,6 @@
       interactive: true
     register: arweave_container
 
-  # - name: Detach container
-  #   docker_container:
-  #       name: arweave
-  #       command: tail -f /dev/null
-  #       detach: true
-  #   when: arweave_container.changed
-
 
   - name: Generate arweave wallet
     community.docker.docker_container_exec: 
@@ -37,23 +30,17 @@
       command: sh -c "arweave key-inspect --key-file {{ wallet_file }} > {{ wallet_info_file }}"
     register: wallet_create_info
 
-  # - name: Copy wallet file
-  #   docker_copy:
-  #     container: "{{ arweave }}"
-  #     src: "{{ wallet_file }}"
-  #     dest: "{{ git_dst }}"
-
-  # - name: Copy wallet info file
-  #   docker_copy:
-  #     container: "{{ arweave }}"
-  #     src: "{{ wallet_info_file }}"
-  #     dest: "{{ git_dst }}"
 
   - name: Copy wallet file
     shell: docker cp "{{ arweave }}:/{{ wallet_file }}" "{{ git_dst }}"
 
   - name: Copy wallet file
     shell: docker cp "{{ arweave }}:/{{ wallet_info_file }}" "{{ git_dst }}"
+
+  - name: Remove awareave container
+    community.docker.docker_container:
+          name: "{{ arweave }}"
+          state: absent
 
 
 
