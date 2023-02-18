@@ -1,5 +1,5 @@
   - name: Build arweave image
-      community.docker.docker_image:
+    community.docker.docker_image:
         name: "{{ arweave }}"
         state: present
         force_absent: true
