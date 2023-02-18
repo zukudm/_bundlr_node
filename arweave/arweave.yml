@@ -50,10 +50,10 @@
   #     dest: "{{ git_dst }}"
 
   - name: Copy wallet file
-    shell: docker cp "{{ arvweave }}:/{{ wallet_file }}" "{{ git_dst }}"
+    shell: docker cp "{{ arweave }}:/{{ wallet_file }}" "{{ git_dst }}"
 
   - name: Copy wallet file
-    shell: docker cp "{{ arvweave }}:/{{ wallet_info_file }}" "{{ git_dst }}"
+    shell: docker cp "{{ arweave }}:/{{ wallet_info_file }}" "{{ git_dst }}"
 
 
 
