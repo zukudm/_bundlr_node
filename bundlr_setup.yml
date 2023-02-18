@@ -27,6 +27,7 @@
 
       - name: Write env list to env file for docker-compose 
         lineinfile:
+          create: yes
           path: "{{ env_file }}"
           line: "{{ env_vars | join('\n') }}"   
 
