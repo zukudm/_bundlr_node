@@ -40,6 +40,7 @@
         community.docker.docker_compose:
           project_src: "{{ git_dst }}"
           pull: true
+          detached: yes
         register: output
           
       
