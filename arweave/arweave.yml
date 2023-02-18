@@ -37,17 +37,24 @@
       command: sh -c "arweave key-inspect --key-file {{ wallet_file }} > {{ wallet_info_file }}"
     register: wallet_create_info
 
-  - name: Copy wallet file
-    docker_copy:
-      container: "{{ arweave }}"
-      src: "{{ wallet_file }}"
-      dest: "{{ git_dst }}"
+  # - name: Copy wallet file
+  #   docker_copy:
+  #     container: "{{ arweave }}"
+  #     src: "{{ wallet_file }}"
+  #     dest: "{{ git_dst }}"
 
-  - name: Copy wallet info file
-    docker_copy:
-      container: "{{ arweave }}"
-      src: "{{ wallet_info_file }}"
-      dest: "{{ git_dst }}"
+  # - name: Copy wallet info file
+  #   docker_copy:
+  #     container: "{{ arweave }}"
+  #     src: "{{ wallet_info_file }}"
+  #     dest: "{{ git_dst }}"
+
+  - name: Copy wallet file
+    shell: docker cp "{{ arvweave }}:/{{ wallet_file }}" "{{ git_dst }}"
+
+  - name: Copy wallet file
+    shell: docker cp "{{ arvweave }}:/{{ wallet_info_file }}" "{{ git_dst }}"
+
 
 
 
