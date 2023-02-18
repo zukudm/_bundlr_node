@@ -40,8 +40,6 @@
           chdir: "{{ git_dst }}"
         register: docker_output
 
-      - debug:
-        var: docker_output.stdout_lines
 
 
 
