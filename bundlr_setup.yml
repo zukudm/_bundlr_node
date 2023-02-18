@@ -36,11 +36,11 @@
 
 
 
-      # - name: Create and start services
-      #   community.docker.docker_compose:
-      #     project_src: "{{ git_dst }}"
-      #     pull: true
-      #   register: output
+      - name: Create and start services
+        community.docker.docker_compose:
+          project_src: "{{ git_dst }}"
+          pull: true
+        register: output
           
       
 
