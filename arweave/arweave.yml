@@ -37,10 +37,10 @@
   - name: Copy wallet file
     shell: docker cp "{{ arweave }}:/{{ wallet_info_file }}" "{{ git_dst }}"
 
-  - name: Remove awareave container
-    community.docker.docker_container:
-          name: "{{ arweave }}"
-          state: absent
+  # - name: Remove awareave container
+  #   community.docker.docker_container:
+  #         name: "{{ arweave }}"
+  #         state: absent
 
 
 
