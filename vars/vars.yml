@@ -2,7 +2,7 @@
 host: localhost
 container_name: bundlr_node
 volume_name: bundlr_volume
-network_name: bundlr_net
+network_name: bundlr_default
 working_user: ansible
 dockerfile: Dockerfile
 wallet_file: "wallet.json"

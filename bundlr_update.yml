@@ -7,31 +7,20 @@
   
   tasks:
 
-      - name: Check if Docker and Docker Compose are installed
-        include_tasks: "playbooks/check_docker.yml"
-
-      # - name: Remove containers and all not used container stuff
-      #   include_tasks: "playbooks/clean.yml"
       
       - name: Git checkout
         ansible.builtin.git:
           repo: '{{ git_url }}'
           dest: "{{ git_dst }}"
-          force: true
+          remote: origin
+          bransh: master
+          update: yes
           track_submodules: true
-
-      - name: Write env list to env file for docker-compose 
-        copy:
-          dest: "{{ git_dst }}{{ env_file }}"
-          content: "{{ env_vars | join('\n') }}"   
-
-      - name: Run arweave container and generate wallet
-        include_tasks: "arweave/arweave.yml"
             
   
-      - name: Start project
+      - name: Update the project
         shell: 
-          cmd: docker-compose up -d
+          cmd: docker-compose up --build -d
           chdir: "{{ git_dst }}"
         register: docker_output
 
