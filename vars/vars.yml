@@ -22,12 +22,8 @@ env_vars:
     - "GW_CONTRACT=RkinCLBlY4L5GZFv8gCFcrygTyd5Xm91CzKlR6qxhKA"
 
 arweave: arweave
+arweave_dockerfile_url: https://raw.githubusercontent.com/zukudm/_bundlr_node/master/arweave/Dockerfile
 
-arweave_dockerfile_content: |
-    FROM node:14-alpine
-    RUN apk add --no-cache git
-    RUN npm install -g arweave-deploy
-    CMD ["sh"]
 
 
 
