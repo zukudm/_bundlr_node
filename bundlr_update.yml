@@ -13,7 +13,7 @@
           repo: '{{ git_url }}'
           dest: "{{ git_dst }}"
           remote: origin
-          bransh: master
+          branch: master
           update: yes
           track_submodules: true
         register: git_pull_output
@@ -25,7 +25,7 @@
           chdir: "{{ git_dst }}"
         register: docker_output
         when: git_pull_output.changed
-        
+
 
 
 
