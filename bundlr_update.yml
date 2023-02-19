@@ -12,10 +12,9 @@
         ansible.builtin.git:
           repo: '{{ git_url }}'
           dest: "{{ git_dst }}"
-          remote: origin
-          branch: master
           update: yes
           track_submodules: true
+          recursive: true
         register: git_pull_output
             
   
