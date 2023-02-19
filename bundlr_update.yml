@@ -16,6 +16,7 @@
           bransh: master
           update: yes
           track_submodules: true
+        register: git_pull_output
             
   
       - name: Update the project
@@ -23,6 +24,8 @@
           cmd: docker-compose up --build -d
           chdir: "{{ git_dst }}"
         register: docker_output
+        when: git_pull_output.changed
+        
 
 
 
