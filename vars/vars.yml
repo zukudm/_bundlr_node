@@ -23,6 +23,13 @@ env_vars:
 
 arweave: arweave
 
+arweave_dockerfile_content:
+    - 'FROM node:14-alpine'
+    - 'RUN apk add --no-cache git'
+    - 'RUN npm install -g arweave-deploy'
+    - 'CMD ["sh"]'
+
+
 
 cpus: 1
 cpu_shares: 1024

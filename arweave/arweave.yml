@@ -4,8 +4,9 @@
         state: present
         force_absent: true
         build:
-          path: "{{ arweave }}/"
-          dockerfile: "{{ dockerfile }}"
+          # path: "{{ arweave }}/"
+          dockerfile: |
+            "{{ arweave_dockerfile_content | join('\n') }}"
         source: build
 
   - name: Start container
