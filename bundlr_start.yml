@@ -14,4 +14,11 @@
           chdir: "{{ git_dst }}"
         register: docker_output
 
+      - name: Add a container to a network, leaving existing containers connected
+        docker_network:
+          name: "{{ network_name }}"
+          connected:
+            - "{{ arweave }}"
+          appends: yes
+
      
