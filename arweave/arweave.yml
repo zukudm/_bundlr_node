@@ -43,7 +43,7 @@
   - name: Generate arweave wallet
     community.docker.docker_container_exec: 
       container: "{{ arweave }}"
-      command: sh -c "arweave key-create {{ wallet_file }}"
+      command: sh -c ""printf %s y |arweave key-create {{ wallet_file }}"
     register: wallet_create_info
     # when: file_info.stdout_lines[0] != "0"
 
