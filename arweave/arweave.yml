@@ -61,7 +61,7 @@
 
   - name: Print wallet public address
     debug:
-      msg: "wallet_create_info.stdout"
+      msg: "{{ wallet_create_info.stdout }}"
 
   # - name: Copy wallet file
   #   shell: docker cp "{{ arweave }}:/{{ wallet_file }}" "{{ git_dst }}"
