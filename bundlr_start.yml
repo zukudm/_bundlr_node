@@ -1,0 +1,17 @@
+- name: Install 
+  vars_files: 
+    - vars/vars.yml
+  hosts: "{{ host }}"
+  gather_facts: yes
+  become: yes    
+  
+  tasks:
+
+      
+      - name: Start project
+        shell: 
+          cmd: docker-compose up -d
+          chdir: "{{ git_dst }}"
+        register: docker_output
+
+     
