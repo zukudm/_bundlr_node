@@ -23,8 +23,6 @@
       interactive: true
       volumes:
         - "{{ git_dst }}{{ wallet_file }}:/{{ wallet_file }}"
-      networks:
-        name:  "{{ network_name }}"
     register: arweave_container
     ignore_errors: yes
 
