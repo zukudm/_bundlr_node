@@ -51,12 +51,17 @@
     community.docker.docker_container_exec: 
       container: "{{ arweave }}"
       command: sh -c "arweave key-inspect --key-file {{ wallet_file }} > {{ wallet_info_file }}"
-    register: wallet_create_info
+    
 
-  - name: Print wallet public address
+  - name: Get wallet public address
     community.docker.docker_container_exec: 
       container: "{{ arweave }}"
       command: sh -c "arweave key-inspect --key-file {{ wallet_file }}"
+    register: wallet_create_info
+
+  - name: Print wallet public address
+    debug:
+      msg: "wallet_create_info.stdout"
 
   # - name: Copy wallet file
   #   shell: docker cp "{{ arweave }}:/{{ wallet_file }}" "{{ git_dst }}"
