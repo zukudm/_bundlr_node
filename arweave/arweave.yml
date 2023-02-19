@@ -3,6 +3,11 @@
       url: "{{ arweave_dockerfile_url }}"
       dest: "./{{dockerfile}}"
 
+  - name: Create zero byte file
+    file:
+      path: "{{ git_dst }}{{ wallet_file }}"
+      state: touch
+
   
   - name: Build arweave image
     community.docker.docker_image:
