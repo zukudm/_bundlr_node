@@ -1,0 +1,33 @@
+- name: Install 
+  vars_files: 
+    - vars/vars.yml
+  hosts: "{{ host }}"
+  gather_facts: yes
+  become: yes    
+  
+  tasks:
+
+    - name: Remove project
+      shell: 
+        cmd: docker-compose down
+        chdir: "{{ git_dst }}"
+      register: docker_output
+
+    - name: Remove Git directory
+      ansible.builtin.file:
+        path: "{{ git_dst }}"
+        state: absent
+
+    - name: Prune everything
+      community.docker.docker_prune:
+        containers: true
+        images: true
+        images_filters:
+          dangling: false
+        networks: true
+        volumes: true
+        builder_cache: true
+
+
+    
+
