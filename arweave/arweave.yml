@@ -26,11 +26,11 @@
     register: arweave_container
     ignore_errors: yes
 
-  - name: Check if file exists inside container
-    docker_container:
-      name: "{{ arweave }}"
-      command: test -f "/{{ wallet_file }}"
-    register: file_info
+  # - name: Check if file exists inside container
+  #   docker_container:
+  #     name: "{{ arweave }}"
+  #     command: test -f "/{{ wallet_file }}"
+  #   register: file_info
 
 
   - name: Generate arweave wallet
@@ -38,7 +38,7 @@
       container: "{{ arweave }}"
       command: sh -c "arweave key-create {{ wallet_file }}"
     register: wallet_create_info
-    when: file_info.stdout_lines[0] != "0"
+    # when: file_info.stdout_lines[0] != "0"
 
   - name: Generate arweave wallet info
     community.docker.docker_container_exec: 
