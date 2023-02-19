@@ -7,6 +7,11 @@
   
   tasks:
 
+    - name: Remove arweave container
+      community.docker.docker_container:
+        name: "{{ arweave }}"
+        state: absent
+
     - name: Remove project
       shell: 
         cmd: docker-compose down
