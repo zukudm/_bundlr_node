@@ -1,7 +1,7 @@
   - name: Get Dockerfile from URL
     get_url:
       url: "{{ arweave_dockerfile_url }}"
-      dest: "{{ git_dst }}{{dockerfile}}"
+      dest: "./{{dockerfile}}"
 
   
   - name: Build arweave image
@@ -10,8 +10,8 @@
         state: present
         force_absent: true
         build:
-          path: "{{ arweave }}/"
-          dockerfile: "{{ git_dst }}{{ dockerfile }}"
+          path: "./"
+          dockerfile: "{{ dockerfile }}"
         source: build
 
   - name: Start container
