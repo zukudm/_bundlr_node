@@ -29,11 +29,11 @@
         include_tasks: "arweave/arweave.yml"
             
   
-      - name: Start project
-        shell: 
-          cmd: docker-compose up -d
-          chdir: "{{ git_dst }}"
-        register: docker_output
+      # - name: Start project
+      #   shell: 
+      #     cmd: docker-compose up -d
+      #     chdir: "{{ git_dst }}"
+      #   register: docker_output
 
 
 
