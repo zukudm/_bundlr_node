@@ -17,6 +17,8 @@
         build:
           path: "./"
           dockerfile: "{{ dockerfile }}"
+          args:
+              FILE_NAME: "{{ wallet_file }}"
         source: build
 
   - name: Start container
@@ -27,7 +29,7 @@
       tty: true
       interactive: true
       volumes:
-        - "{{ git_dst }}{{ wallet_file }}:/{{ wallet_file }}"
+        - "{{ git_dst }}{{ wallet_file }}:/{{ wallet_file }}:rw"
     register: arweave_container
     ignore_errors: yes
 
